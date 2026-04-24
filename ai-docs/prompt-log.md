@@ -64,3 +64,16 @@
 
 → Response: Wiring up GH Pages deploy via GitHub Actions as subsite of jackzhaojin.github.io, expanding "How it was built" with per-prompt animated sections, and logging this conversation.
 → Action: Adding GH Actions workflow, enhancing meta section with per-prompt animations, created `ai-docs/prompt-log.md`. ✅
+
+---
+
+### Prompt 5: Nav Bug Fix + Apache 2.0 License + Meta Update (11:47 PM)
+
+> Alright, we're gonna do a fifth prompt here. let's let's basically update playwright and then basically note that if you come on somehow click on more than one link it kind of stops working the first link if you run a demo, the next link, the URL updates, you can have to refresh the page manually on mobile and desktop. Let's get that fixed. And then since this will hopefully be our last commit, let's also add in the Apache 2.0 license with my own GitHub copyright. And yeah, that should be it and then whatever else makes make sense.
+>
+> Update how i built this page with a 5th prompt
+>
+> /conversation-logger to '/Users/jackjin/dev/denison-2026-04-24/ai-docs/prompt-log.md' in parallel
+
+→ Response: Fixing nav route-change bug where demo state didn't reset, adding Apache 2.0 LICENSE with jackzhaojin copyright, extending "How it was built" with Prompt 5 section, and logging this conversation.
+→ Action: Updating nav/router components, creating `LICENSE`, updating meta section, appending `ai-docs/prompt-log.md`. ✅

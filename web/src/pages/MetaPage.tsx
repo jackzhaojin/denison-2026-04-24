@@ -71,6 +71,19 @@ const CAPABILITIES: Capability[] = [
     ],
     Animation: ShipToProdAnimation,
   },
+  {
+    number: "05",
+    capability: "Polish & Ship-It",
+    title: "Live QA, bug fix, license, repeat the story",
+    prompt:
+      "Let's update playwright and note that if you click on more than one link it stops working — you have to refresh. Let's also add in the Apache 2.0 license with my GitHub copyright. Update 'How I built this' with a 5th prompt.",
+    artifacts: [
+      "Lazy-component cache + <Component key={slug} /> — clean remount per route",
+      "LICENSE — Apache 2.0, © 2026 jackzhaojin",
+      "MetaPage prompt 05 block + updated stat band",
+    ],
+    Animation: PolishAnimation,
+  },
 ]
 
 export function MetaPage() {
@@ -133,7 +146,7 @@ function HeroSection() {
       <div className="flex items-center gap-3">
         <span className="font-eyebrow text-xs text-gold">Meta · Build Log</span>
         <div className="h-px flex-1 bg-white/30" />
-        <span className="font-eyebrow text-xs text-white/80">4 prompts · 1 session</span>
+        <span className="font-eyebrow text-xs text-white/80">5 prompts · 1 session</span>
       </div>
       <motion.h1
         initial={{ opacity: 0, y: 14 }}
@@ -141,14 +154,14 @@ function HeroSection() {
         transition={{ duration: 0.6 }}
         className="font-display text-5xl font-semibold leading-tight text-white md:text-7xl"
       >
-        Four prompts, one app,
+        Five prompts, one app,
         <br />
         <span className="text-gold">twenty</span> living algorithms.
       </motion.h1>
       <p className="max-w-3xl font-body text-lg text-cream md:text-xl">
         Each prompt below is a capability, not a checklist — watch Claude
         Code fan out agents, write files in parallel, verify itself in a
-        real browser, and ship to production.
+        real browser, ship to production, and then QA the live site.
       </p>
     </section>
   )
@@ -231,8 +244,8 @@ function CapabilityBlock({ cap, isLast }: { cap: Capability; isLast: boolean }) 
 
 function StatBand() {
   const stats = [
-    { n: "4", l: "Prompts" },
-    { n: "9", l: "Agents" },
+    { n: "5", l: "Prompts" },
+    { n: "10", l: "Agents" },
     { n: "20", l: "Visualizations" },
     { n: "1", l: "Live deployment" },
     { n: "0", l: "New npm deps" },
@@ -1090,5 +1103,191 @@ function ShipToProdAnimation() {
         PUSH → ACTIONS → PAGES · LOOPS ON EACH COMMIT
       </text>
     </svg>
+  )
+}
+
+function PolishAnimation() {
+  const W = 520
+  const H = 280
+  const steps = [
+    { label: "Route remount fix", icon: "bug" },
+    { label: "Apache 2.0 LICENSE", icon: "doc" },
+    { label: "Meta page · prompt 05", icon: "edit" },
+  ]
+  const pillW = 150
+  const pillH = 48
+  const gap = 18
+  const totalW = steps.length * pillW + (steps.length - 1) * gap
+  const startX = (W - totalW) / 2
+  const rowY = 60
+  const cycle = steps.length + 1.5
+
+  return (
+    <svg
+      viewBox={`0 0 ${W} ${H}`}
+      width="100%"
+      className="max-w-full"
+      role="img"
+      aria-label="Polish and ship-it animation"
+    >
+      <text
+        x={W / 2}
+        y={28}
+        textAnchor="middle"
+        fontSize={10}
+        fill={DENISON.redDark}
+        fontFamily="Oswald, sans-serif"
+        letterSpacing="0.22em"
+        opacity={0.75}
+      >
+        PROMPT 05 · POLISH CHECKLIST
+      </text>
+
+      {steps.map((s, i) => {
+        const x = startX + i * (pillW + gap)
+        return (
+          <g key={s.label}>
+            <rect
+              x={x}
+              y={rowY}
+              width={pillW}
+              height={pillH}
+              rx={pillH / 2}
+              fill={DENISON.redDark}
+              opacity={0.85}
+            />
+            <motion.rect
+              x={x}
+              y={rowY}
+              height={pillH}
+              rx={pillH / 2}
+              fill={DENISON.gold}
+              initial={{ width: 0 }}
+              animate={{ width: [0, 0, pillW, pillW, 0] }}
+              transition={{
+                duration: cycle,
+                times: [0, i / cycle, (i + 0.9) / cycle, (steps.length + 0.8) / cycle, 1],
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <PolishIcon
+              name={s.icon}
+              cx={x + 20}
+              cy={rowY + pillH / 2}
+            />
+            <text
+              x={x + 40}
+              y={rowY + pillH / 2 + 4}
+              fontSize={11}
+              fill={DENISON.white}
+              fontFamily="Oswald, sans-serif"
+              letterSpacing="0.08em"
+            >
+              {s.label}
+            </text>
+          </g>
+        )
+      })}
+
+      <motion.g
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{
+          opacity: [0, 0, 0, 1, 1, 0],
+          scale: [0.6, 0.6, 0.6, 1, 1, 0.6],
+        }}
+        transition={{
+          duration: cycle,
+          times: [
+            0,
+            (steps.length - 0.2) / cycle,
+            (steps.length + 0.1) / cycle,
+            (steps.length + 0.4) / cycle,
+            (steps.length + 1.1) / cycle,
+            1,
+          ],
+          repeat: Infinity,
+        }}
+      >
+        <rect
+          x={W / 2 - 80}
+          y={rowY + pillH + 34}
+          width={160}
+          height={52}
+          rx={8}
+          fill={DENISON.cream}
+          stroke={DENISON.gold}
+          strokeWidth={2}
+        />
+        <text
+          x={W / 2}
+          y={rowY + pillH + 58}
+          textAnchor="middle"
+          fontSize={22}
+          fill={DENISON.redDark}
+          fontFamily="Lora, serif"
+          fontWeight={600}
+        >
+          5 / 5 ✓
+        </text>
+        <text
+          x={W / 2}
+          y={rowY + pillH + 76}
+          textAnchor="middle"
+          fontSize={9}
+          fill={DENISON.redDark}
+          fontFamily="Oswald, sans-serif"
+          letterSpacing="0.2em"
+          opacity={0.7}
+        >
+          READY FOR DEMO
+        </text>
+      </motion.g>
+
+      <text
+        x={W / 2}
+        y={H - 14}
+        textAnchor="middle"
+        fontSize={8}
+        fill={DENISON.redDark}
+        fontFamily="Oswald, sans-serif"
+        letterSpacing="0.2em"
+        opacity={0.7}
+      >
+        FIX · LICENSE · DOCS · LOOP
+      </text>
+    </svg>
+  )
+}
+
+function PolishIcon({ name, cx, cy }: { name: string; cx: number; cy: number }) {
+  if (name === "bug") {
+    return (
+      <g transform={`translate(${cx - 7}, ${cy - 7})`}>
+        <circle cx={7} cy={7} r={5} fill={DENISON.white} />
+        <line x1={7} y1={1} x2={7} y2={3} stroke={DENISON.white} strokeWidth={1.5} />
+        <line x1={1} y1={7} x2={3} y2={7} stroke={DENISON.white} strokeWidth={1.5} />
+        <line x1={11} y1={7} x2={13} y2={7} stroke={DENISON.white} strokeWidth={1.5} />
+      </g>
+    )
+  }
+  if (name === "doc") {
+    return (
+      <g transform={`translate(${cx - 6}, ${cy - 8})`}>
+        <rect x={0} y={0} width={12} height={16} rx={2} fill={DENISON.white} />
+        <line x1={2} y1={5} x2={10} y2={5} stroke={DENISON.redDark} strokeWidth={1} />
+        <line x1={2} y1={8} x2={10} y2={8} stroke={DENISON.redDark} strokeWidth={1} />
+        <line x1={2} y1={11} x2={8} y2={11} stroke={DENISON.redDark} strokeWidth={1} />
+      </g>
+    )
+  }
+  return (
+    <g transform={`translate(${cx - 7}, ${cy - 7})`}>
+      <path
+        d="M1 13 L10 4 L12 6 L3 15 Z"
+        fill={DENISON.white}
+      />
+      <path d="M10 4 L12 2 L14 4 L12 6 Z" fill={DENISON.white} />
+    </g>
   )
 }

@@ -45,7 +45,7 @@ export function HomePage() {
       <section className="grid grid-cols-1 gap-6 md:grid-cols-3">
         <StatCallout number="20" label="Animated Topics" />
         <StatCallout number="6" label="Course Categories" />
-        <StatCallout number="1" label="Prompt to Build It" />
+        <StatCallout number="5" label="Prompts to Build It" />
       </section>
 
       <section className="flex flex-col gap-6">
