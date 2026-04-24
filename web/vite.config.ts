@@ -4,7 +4,8 @@ import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
 
 // https://vite.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  base: command === "build" ? "/denison-2026-04-24/" : "/",
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -15,4 +16,4 @@ export default defineConfig({
   optimizeDeps: {
     include: ["react", "react-dom", "react/jsx-runtime", "motion/react"],
   },
-})
+}))

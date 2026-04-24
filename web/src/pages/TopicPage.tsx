@@ -11,11 +11,12 @@ export function TopicPage() {
 
   const Component = React.useMemo(() => {
     if (!topic) return null
-    return React.lazy(async () => {
+    return React.lazy<React.ComponentType>(async () => {
       const key = `./topics/${topic.slug}.tsx`
       const loader = topicModules[key]
       if (!loader) {
-        return { default: () => <StubTopic slug={topic.slug} /> }
+        const Stub: React.ComponentType = () => <StubTopic slug={topic.slug} />
+        return { default: Stub }
       }
       const mod = (await loader()) as { default: React.ComponentType }
       return { default: mod.default }

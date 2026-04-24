@@ -5,9 +5,11 @@ import { MetaPage } from "@/pages/MetaPage"
 import { TopicPage } from "@/pages/TopicPage"
 import { NotFoundPage } from "@/pages/NotFoundPage"
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, "") || "/"
+
 export function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
