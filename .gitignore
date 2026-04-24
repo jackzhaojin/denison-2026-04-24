@@ -1,0 +1,69 @@
+# ==== Node.js ====
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.npm/
+.yarn/
+.pnp.*
+.pnpm-store/
+
+# ==== Vite ====
+dist/
+dist-ssr/
+build/
+.vite/
+*.local
+
+# ==== Env / secrets ====
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# ==== Coverage / test output ====
+coverage/
+.nyc_output/
+*.lcov
+
+# ==== TypeScript ====
+*.tsbuildinfo
+
+# ==== Editor / IDE ====
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ==== macOS ====
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.DocumentRevisions-V100
+.TemporaryItems
+.VolumeIcon.icns
+Icon?
+
+# ==== Logs ====
+logs/
+*.log
+
+# ==== Local-only (gitignored scratch space) ====
+local-only/
+**/local-only/
+*.local-only
+scratch/
+.scratch/
