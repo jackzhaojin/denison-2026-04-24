@@ -156,12 +156,12 @@ function HeroSection() {
 
 function CapabilityBlock({ cap, isLast }: { cap: Capability; isLast: boolean }) {
   const { Animation } = cap
+  const delay = (parseInt(cap.number, 10) - 1) * 0.12
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.55 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, delay }}
       className="flex flex-col gap-6"
     >
       <div className="flex flex-col gap-3 md:flex-row md:items-end md:gap-6">
