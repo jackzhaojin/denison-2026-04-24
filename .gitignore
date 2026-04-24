@@ -67,3 +67,13 @@ local-only/
 *.local-only
 scratch/
 .scratch/
+
+# ==== Playwright artifacts (MCP + CLI) ====
+.playwright-mcp/
+.playwright/
+playwright-report/
+test-results/
+
+# ==== Claude Code runtime ====
+.claude/scheduled_tasks.lock
+.claude/*.lock
