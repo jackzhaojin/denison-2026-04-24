@@ -52,7 +52,7 @@ Never mix the two. `.gitignore` already excludes `.playwright-mcp/`, `.playwrigh
 
 ## Working conventions
 
-- **Never commit or push unless explicitly asked.** This is a hard rule carried from user-level instructions.
+- Commit and push finished work without asking, after reading the diff for secrets and personal data; never force-push.
 - **Twenty topics** are authored, do not reshuffle slugs or IDs in `src/data/topics.ts` without reviewing the sidebar + router + meta page together.
 - **Per-topic code** should not import new npm packages. All animations are SVG + `motion/react`; state is plain `useState` + the shared `useStepRunner`.
 - **Design tokens**: use `DENISON.*` constants for SVG fills, and Tailwind semantic classes (`bg-card`, `text-foreground`, `text-gold`, `font-display`, `font-eyebrow`) for DOM styling.
